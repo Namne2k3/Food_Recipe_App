@@ -1,10 +1,10 @@
 <div class="col">
   <div class="card h-100">
-    <img [src]="category()?.strCategoryThumb" class="card-img-top" [alt]="category()?.strCategory">
+    <img [src]="category()?.strCategoryThumb" class="img-fluid" [alt]="category()?.strCategory">
     <div class="card-body">
       <h5 class="card-title">{{category()?.strCategory}}</h5>
-      <p class="card-text">{{category()?.strCategoryDescription}}</p>
-      <a [routerLink]="['/category', category()?.strCategory]" class="btn btn-sm btn-outline-primary">Xem món ăn</a>
+      <p class="card-text text-truncate">{{category()?.strCategoryDescription}}</p>
+      <a [routerLink]="['/category', category()?.strCategory]" class="btn btn-sm btn-outline-primary">View Category</a>
     </div>
   </div>
 </div>
