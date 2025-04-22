@@ -1,82 +1,59 @@
-# Food Recipe Web
+# FoodRecipeApp
 
-Ứng dụng web tra cứu công thức món ăn được xây dựng với Angular và TheMealDB API. Dự án này được phát triển như một ứng dụng client-side đơn giản để thực hành các khái niệm cơ bản của Angular.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
 
-## Tổng quan
+## Development server
 
-Food Recipe Web là một ứng dụng cho phép người dùng:
-- Tìm kiếm công thức món ăn
-- Xem danh sách món ăn theo danh mục
-- Xem chi tiết công thức và hướng dẫn nấu ăn
-- Khám phá món ăn ngẫu nhiên
+To start a local development server, run:
 
-## Chức năng chính
-
-1. **Trang chủ**
-   - Hiển thị danh mục món ăn phổ biến
-   - Hiển thị món ăn đề xuất
-   - Hiển thị một món ăn ngẫu nhiên
-   - Thanh tìm kiếm nhanh
-
-2. **Tìm kiếm món ăn**
-   - Tìm kiếm theo tên món ăn
-   - Lọc kết quả tìm kiếm
-   - Hiển thị kết quả dưới dạng grid
-
-3. **Xem danh mục món ăn**
-   - Hiển thị danh sách các món ăn theo danh mục
-   - Phân trang kết quả (nếu cần)
-
-4. **Xem chi tiết món ăn**
-   - Hiển thị hình ảnh món ăn
-   - Hiển thị danh sách nguyên liệu và định lượng
-   - Hiển thị hướng dẫn nấu ăn theo từng bước
-   - Hiển thị video hướng dẫn (nếu có)
-   - Hiển thị thông tin bổ sung (quốc gia xuất xứ, thẻ)
-
-5. **Món ăn ngẫu nhiên**
-   - Hiển thị một món ăn ngẫu nhiên
-   - Tùy chọn để lấy món ăn ngẫu nhiên khác
-
-## Công nghệ sử dụng
-
-- **Frontend**: Angular 17+
-- **API**: TheMealDB (https://www.themealdb.com/api.php)
-- **UI Components**: Angular Material (tùy chọn)
-- **CSS**: SCSS
-
-## Kiến thức Angular được áp dụng
-
-- Components và Templates
-- Data binding (property binding, event binding, two-way binding)
-- Content Projection (ng-content)
-- Directives (ngIf, ngFor, custom directives)
-- Services và Dependency Injection
-- HTTP Client và Observables
-- Routing
-- Forms (Reactive Forms)
-- Pipes (built-in và custom pipes)
-
-## Cấu trúc dự án
-
-```
-food-recipe-web/
-├── src/
-│   ├── app/
-│   │   ├── core/           # Services, models, guards
-│   │   ├── features/       # Feature components (home, recipe-detail, etc.)
-│   │   ├── shared/         # Shared components, directives, pipes
-│   │   ├── app.component.ts
-│   │   └── app.module.ts
-│   ├── assets/
-│   ├── environments/
-│   └── index.html
-└── ...
+```bash
+ng serve
 ```
 
-## Hướng dẫn cài đặt
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-1. Clone repository
-2. Cài đặt dependencies: `npm install`
-3. Chạy ứng dụng: `ng serve`
-4. Truy cập ứng dụng tại: `http://localhost:4200`
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
