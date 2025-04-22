@@ -47,6 +47,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  handleSearch() {
+
+  }
+
   handleNavigateToMealsPage() {
     this.router.navigate(['/meals'])
   }
