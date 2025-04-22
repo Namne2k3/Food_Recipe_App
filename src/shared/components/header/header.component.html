@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-  <div class="container">
-
-    <a class="navbar-brand d-flex align-items-center" href="">
+  <div class="container d-flex justify-content-between">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
       <img src="https://www.themealdb.com/images/logo-small.png" alt="TheMealDB Logo" height="40" class="me-2">
       <span class="fw-bold text-primary">Food Recipe Web</span>
     </a>
 
-
+    <!-- Toggle button for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-    <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarContent">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="">
+          <a class="nav-link" href="/">
             <fa-icon [icon]="faHome"></fa-icon> Home
           </a>
         </li>
@@ -30,15 +30,6 @@
           </a>
         </li>
       </ul>
-
-      <!-- Thanh tìm kiếm -->
-      <form class="d-flex" (submit)="onSearch()">
-        <input class="form-control me-2" type="search" [(ngModel)]="searchTerm" name="search"
-          placeholder="Search for food..." aria-label="Search" required>
-        <button class="btn btn-sm btn-outline-primary" type="submit">
-          <fa-icon [icon]="faSearch"></fa-icon>
-        </button>
-      </form>
     </div>
   </div>
 </nav>
