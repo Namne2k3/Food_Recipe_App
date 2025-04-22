@@ -1,3 +1,10 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    // mặc định route
+    {
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => import('../shared/components/home/home.component').then(m => m.HomeComponent)
+    }
+];
