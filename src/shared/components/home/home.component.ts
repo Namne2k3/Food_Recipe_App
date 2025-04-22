@@ -5,22 +5,25 @@ import { Category } from '../../../core/models/category.type';
 import { MealService } from '../../../core/services/meal.service';
 import { catchError } from 'rxjs';
 import { CategoryCardComponent } from '../category-card/category-card.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, CategoryCardComponent],
+  imports: [RouterLink, CategoryCardComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   randomMeal = signal<Meal | null>(null)
   categories = signal<Category[]>([])
+  searchTerm = signal<string>('')
   mealService = inject(MealService)
   router = inject(Router)
 
   constructor() {
 
   }
+
   ngOnInit(): void {
     if (this.mealService) {
       this.mealService.getRandomMeal()
@@ -48,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   handleSearch() {
-
+    this.router.navigate(['/meals'], { queryParams: { search: this.searchTerm() } });
   }
 
   handleNavigateToMealsPage() {
