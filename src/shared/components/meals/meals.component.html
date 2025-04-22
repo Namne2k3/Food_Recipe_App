@@ -1,1 +1,60 @@
-<h1>Meals component</h1>
+<div class="container mt-4">
+  <!-- Search Container -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h4 class="card-title mb-3">Find Your Perfect Recipe</h4>
+      <div class="input-group">
+        <input type="text" class="form-control form-control-lg" placeholder="Search for meals ..."
+          [value]="searchTerm()" (change)="onSearchInput($event)">
+        <button class="btn btn-danger" type="button" *ngIf="searchTerm()" (click)="clearSearch()">
+          <i class="bi bi-x"></i>
+        </button>
+        <button class="btn btn-primary" type="button" (click)="searchMeals()">
+          <i class="bi bi-search me-2"></i>Search
+        </button>
+      </div>
+      @if (searchTerm()) {
+      <div class="mt-2 text-muted small">
+        Showing results for: <span class="fw-bold">{{searchTerm()}}</span>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  @if (isLoading()) {
+  <div class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  }
+
+  <!-- Results Section -->
+  @if (!isLoading() && mealsData() && mealsData().length > 0) {
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (meal of mealsData(); track meal.idMeal) {
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img [src]="meal.strMealThumb" class="card-img-top" [alt]="meal.strMeal">
+        <div class="card-body">
+          <h5 class="card-title">{{meal.strMeal}}</h5>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted small">{{meal.strCategory}}</span>
+            <span class="badge bg-primary">{{meal.strArea}}</span>
+          </div>
+          <a [routerLink]="['/meal', meal.idMeal]" class="btn btn-sm btn-outline-primary mt-2">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+  @else if (!isLoading() && (!mealsData() || mealsData().length === 0) && searchTerm()) {
+  <div class="alert alert-info text-center my-5">
+    <h4>No meals found for "{{searchTerm()}}"</h4>
+    <p>Try searching for something else or check your spelling.</p>
+  </div>
+  }
+
+</div>
