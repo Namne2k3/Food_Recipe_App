@@ -1,0 +1,67 @@
+<div>
+  <!-- Tiêu đề lớn -->
+  <section class="home-page">
+    <div class="hero-section text-center py-5 bg-primary-subtle p-4 rounded-4 w-100">
+      <h1 class="display-4">Explore the World of Cuisine</h1>
+      <p class="lead">Thousands of cooking recipes from around the world</p>
+      <div class="mt-4">
+        <button (click)="handleNavigateToMealsPage()" class="btn btn-primary me-2">Explore now</button>
+        <button class="btn btn-outline-secondary">View Categories</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-5">
+    <div class="card shadow-sm p-3">
+      <h4 class="mb-3">Find Your Perfect Recipe</h4>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for meals...">
+        <button class="btn btn-primary" type="button" (click)="handleSearch()">
+          <i class="bi bi-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-5">
+    <div class="d-flex justify-content-center">
+      <h2 class="text-center mb-4 p-3 rounded-3 title-container">Meal Suggestion of the Day</h2>
+    </div>
+    @if (randomMeal()) {
+    <div class="card shadow-sm">
+      <div class="row g-0">
+        <div class="col-md-4 card-header">
+          <img [src]="randomMeal()?.strMealThumb" class="img-fluid rounded-start img-thumbnail"
+            [alt]="randomMeal()?.strMeal">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <blockquote class="blockquote meal-quote">
+              <h3 class="card-title mb-2">{{randomMeal()?.strMeal}}</h3>
+              <footer class="blockquote-footer d-flex align-items-center">
+                <i class="bi bi-globe me-2"></i>
+                <span>Cuisine: <strong>{{randomMeal()?.strArea}}</strong></span>
+                @if (randomMeal()?.strCategory) {
+                <span class="mx-2">|</span>
+                <span>Category: <strong>{{randomMeal()?.strCategory}}</strong></span>
+                }
+              </footer>
+            </blockquote>
+            <div class="card-text recipe-instructions">{{randomMeal()?.strInstructions}}</div>
+            <a [routerLink]="['/meal', randomMeal()?.idMeal]" class="btn btn-outline-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </section>
+
+  <section class="my-5">
+    <h2 class="text-center mb-4">Meal Categories</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (category of categories(); track $index) {
+      <app-category-card [category]="category"></app-category-card>
+      }
+    </div>
+  </section>
+</div>
