@@ -1,16 +1,14 @@
 import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 @Component({
-    selector: 'app-footer',
-    template: `
-        <footer>
-            <div class="container">
-                <p>&copy; 2023 Food Recipe App. All rights reserved.</p>
-            </div>
-        </footer>
-    `,
-    imports: []
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  imports: [RouterLink, CommonModule]
 })
 export class FooterComponent {
+  currentYear: number = new Date().getFullYear();
 
+  constructor() { }
 }
