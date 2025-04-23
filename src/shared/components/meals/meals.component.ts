@@ -1,10 +1,11 @@
-import { Component, inject, OnDestroy, OnInit, signal } from "@angular/core";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { MealService } from "../../../core/services/meal.service";
-import { Meal } from "../../../core/models/meal.type";
-import { catchError, debounceTime, distinctUntilChanged, Subject, takeUntil } from "rxjs";
-import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { Component, inject, OnDestroy, OnInit, signal } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { catchError, debounceTime, distinctUntilChanged, Subject, takeUntil } from "rxjs";
+import { Meal } from "../../../core/models/meal.type";
+import { MealService } from "../../../core/services/meal.service";
+import { MealCardComponent } from "../meal-card/meal-card.component";
 
 /*
   Note về RxJS:
@@ -22,7 +23,7 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
-  imports: [FormsModule, RouterLink, CommonModule],
+  imports: [FormsModule, CommonModule, MealCardComponent],
 })
 export class MealsComponent implements OnInit, OnDestroy {
 

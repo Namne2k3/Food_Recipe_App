@@ -34,21 +34,7 @@
   @if (!isLoading() && mealsData() && mealsData().length > 0) {
   <div class="row row-cols-1 row-cols-md-3 g-4">
     @for (meal of mealsData(); track meal.idMeal) {
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img [src]="meal.strMealThumb" class="card-img-top" [alt]="meal.strMeal">
-        <div class="card-body">
-          <h5 class="card-title">{{meal.strMeal}}</h5>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="text-muted small">{{meal.strCategory}}</span>
-            <span class="badge bg-primary">{{meal.strArea}}</span>
-          </div>
-          <a [routerLink]="['/meal', meal.idMeal]" class="btn btn-sm btn-outline-primary mt-2">
-            View Recipe
-          </a>
-        </div>
-      </div>
-    </div>
+    <app-meal-card [meal]="meal" class="col mb-4"></app-meal-card>
     }
   </div>
   }
