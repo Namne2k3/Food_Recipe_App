@@ -72,6 +72,13 @@ export class MealsComponent implements OnInit, OnDestroy {
     this.searchSubject.next(input.value.trim());
   }
 
+  generateSlug(name: string): string {
+    return name
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+  }
+
   searchMeals() {
 
     this.isLoading.set(true);
