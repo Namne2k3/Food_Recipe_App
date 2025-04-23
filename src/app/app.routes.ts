@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MealsComponent } from '../shared/components/meals/meals.component';
 import { MealDetailComponent } from '../shared/components/meal-detail/meal-detail.component';
+import { CategoriesComponent } from '../shared/components/category/categories.component';
 
 export const routes: Routes = [
   // mặc định route
@@ -18,5 +19,6 @@ export const routes: Routes = [
     path: 'meals',
     component: MealsComponent
   },
-  { path: 'meal/:id', component: MealDetailComponent }
+  { path: 'meal/:id', component: MealDetailComponent },
+  { path: 'categories/:categoryName', component: CategoriesComponent },
 ];
