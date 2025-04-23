@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'app-meal-detail',
   templateUrl: './meal-detail.component.html',
+  styleUrls: ['./meal-detail.component.css'],
   standalone: true,
   imports: [RouterLink, YouTubePlayerModule, CommonModule]
 })
