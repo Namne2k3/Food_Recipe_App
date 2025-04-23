@@ -23,8 +23,14 @@ export class MealDetailComponent implements OnInit {
   id = signal<string>('');
   youtubeVideoId = signal<string>('');
   apiLoaded = signal<boolean>(false);
+  activeTab = signal<string>('ingredients');
 
   constructor(private mealService: MealService) { }
+
+  // Thêm phương thức để chuyển tab
+  setActiveTab(tabId: string): void {
+    this.activeTab.set(tabId);
+  }
 
   ngOnInit() {
     // Load YouTube API script

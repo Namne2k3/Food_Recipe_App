@@ -56,7 +56,7 @@
 
     <!-- Thông tin chi tiết -->
     <div class="col-lg-7">
-      <div class="card shadow-sm h-100">
+      <div class="card border-0 shadow-sm h-100">
         <div class="card-body">
           <!-- Tên món ăn -->
           <h1 class="card-title mb-2">{{mealData()?.strMeal}}</h1>
@@ -74,14 +74,14 @@
           <!-- Tab navigation -->
           <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients"
-                type="button" role="tab" aria-controls="ingredients" aria-selected="true">
+              <button class="nav-link" [class.active]="activeTab() === 'ingredients'"
+                (click)="setActiveTab('ingredients')" type="button">
                 <i class="bi bi-list-ul me-1"></i> Ingredients
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions"
-                type="button" role="tab" aria-controls="instructions" aria-selected="false">
+              <button class="nav-link" [class.active]="activeTab() === 'instructions'"
+                (click)="setActiveTab('instructions')" type="button">
                 <i class="bi bi-journal-text me-1"></i> Recipe
               </button>
             </li>
@@ -90,7 +90,8 @@
           <!-- Tab content -->
           <div class="tab-content" id="myTabContent">
             <!-- Nguyên liệu -->
-            <div class="tab-pane fade show active" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab">
+            <div class="tab-pane fade" [class.show]="activeTab() === 'ingredients'"
+              [class.active]="activeTab() === 'ingredients'" role="tabpanel" aria-labelledby="ingredients-tab">
               <div class="table-responsive">
                 <table class="table table-hover table-bordered table-striped">
                   <thead class="table-light">
@@ -116,7 +117,8 @@
             </div>
 
             <!-- Cách làm -->
-            <div class="tab-pane fade" id="instructions" role="tabpanel" aria-labelledby="instructions-tab">
+            <div class="tab-pane fade" [class.show]="activeTab() === 'instructions'"
+              [class.active]="activeTab() === 'instructions'" role="tabpanel" aria-labelledby="instructions-tab">
               <div class="card border-0 bg-light">
                 <div class="card-body">
                   <p style="white-space: pre-line" class="mb-0">{{mealData()?.strInstructions}}</p>
