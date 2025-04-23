@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="https://www.themealdb.com/images/logo-small.png" alt="TheMealDB Logo" height="40" class="me-2">
+      <span class="fw-bold text-primary">Food Recipe Web</span>
+    </a>
+
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <fa-icon [icon]="faHome"></fa-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">
+            <fa-icon [icon]="faList"></fa-icon> Categories
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/meals">
+            <fa-icon [icon]="faCutlery"></fa-icon> Meals
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
