@@ -28,17 +28,7 @@
         itemsPerPage: itemsPerPage(),
         currentPage: currentPage()
         }; track meal.idMeal) {
-        <div class="col mb-4">
-          <div class="card h-100 shadow-sm">
-            <img loading="lazy" [src]="meal.strMealThumb" class="card-img-top" [alt]="meal.strMeal">
-            <div class="card-body">
-              <h5 class="card-title">{{meal.strMeal}}</h5>
-              <a [routerLink]="['/meal', meal.idMeal]" class="btn btn-sm btn-outline-primary mt-2">
-                View Recipe
-              </a>
-            </div>
-          </div>
-        </div>
+        <app-meal-summary-card [meal]="meal"></app-meal-summary-card>
         }
       </div>
 

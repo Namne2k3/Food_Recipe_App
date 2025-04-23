@@ -1,16 +1,17 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { MealService } from "../../../core/services/meal.service";
-import { CategoriesResponse, Category } from "../../../core/models/category.type";
 import { CommonModule } from "@angular/common";
-import { MealSummary } from "../../../core/models/meal.type";
-import { catchError } from "rxjs";
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NgxPaginationModule } from 'ngx-pagination'; // Import the NgxPaginationModule
+import { catchError } from "rxjs";
+import { CategoriesResponse, Category } from "../../../core/models/category.type";
+import { MealSummary } from "../../../core/models/meal.type";
+import { MealService } from "../../../core/services/meal.service";
+import { MealSummaryCard } from "../meal-summary-card/meal-summary-card.component";
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  imports: [CommonModule, RouterLink, NgxPaginationModule]
+  imports: [CommonModule, NgxPaginationModule, MealSummaryCard]
 })
 
 export class CategoriesComponent implements OnInit {
