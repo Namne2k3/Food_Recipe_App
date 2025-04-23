@@ -33,6 +33,8 @@ export class CategoriesComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       let categoryName = params['categoryName'];
+
+      // không có params khi vào trang categories mặc định
       if (!categoryName) {
         categoryName = this.categoriesData()?.[0]?.strCategory || null;
       }
@@ -66,7 +68,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   onCategorySelect(category: string) {
-    console.log(category);
     this.selectedCategory.set(category);
     this.router.navigate(['/categories', category]);
   }

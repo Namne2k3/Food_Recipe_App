@@ -6,7 +6,7 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, takeUntil } fr
 import { Meal } from "../../../core/models/meal.type";
 import { MealService } from "../../../core/services/meal.service";
 import { MealCardComponent } from "../meal-card/meal-card.component";
-
+import { NgxPaginationModule } from 'ngx-pagination'; // Import the NgxPaginationModule
 /*
   Note về RxJS:
   - subscribe: Đăng ký để nhận dữ liệu từ Observable. Khi có dữ liệu mới, hàm callback sẽ được gọi.
@@ -23,7 +23,7 @@ import { MealCardComponent } from "../meal-card/meal-card.component";
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
-  imports: [FormsModule, CommonModule, MealCardComponent],
+  imports: [FormsModule, CommonModule, MealCardComponent, NgxPaginationModule],
 })
 export class MealsComponent implements OnInit, OnDestroy {
 
@@ -33,6 +33,9 @@ export class MealsComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute)
   router = inject(Router)
   mealService = inject(MealService)
+
+  currentPage = signal<number>(1)
+  itemsPerPage = signal<number>(9)
 
   private destroy$ = new Subject<void>();
   private searchSubject = new Subject<string>();
