@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faHome, faList, faCutlery } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faList, faCutlery, faContactBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +14,10 @@ export class HeaderComponent implements OnInit {
   faHome = faHome;
   faList = faList;
   faCutlery = faCutlery;
+  faContactBook = faContactBook
   constructor() { }
 
   ngOnInit(): void {
-    console.log("HeaderComponent initialized");
   }
 
   onSearch() {
