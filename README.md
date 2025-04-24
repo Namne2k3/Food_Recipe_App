@@ -1,3 +1,13 @@
+## Phiên bản
+
+### Phiên bản hiện tại: v1.0.2
+
+Ứng dụng tuân theo quy tắc [Semantic Versioning](https://semver.org/) với format: MAJOR.MINOR.PATCH
+
+### Các thay đổi trong phiên bản v1.0.2
+- Tối ưu hóa hiệu suất tải dữ liệu từ API
+- Cập nhật tài liệu README với thông tin đầy đủ về ứng dụng
+
 # Food Recipe Web
 
 Food Recipe Web là ứng dụng web hiện đại được phát triển bằng Angular 19, cho phép người dùng khám phá, tìm kiếm và xem các công thức nấu ăn đa dạng từ khắp nơi trên thế giới. Ứng dụng này sử dụng TheMealDB API để cung cấp dữ liệu về các món ăn.
