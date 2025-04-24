@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { catchError } from "rxjs";
 import { Meal } from "../../../core/models/meal.type";
 import { MealService } from "../../../core/services/meal.service";
-import { YouTubePlayerModule } from "@angular/youtube-player";
+import { YouTubePlayerModule } from "@angular/youtube-player"; // khai báo module youtube player
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -21,24 +21,52 @@ export class MealDetailComponent implements OnInit {
   mealData = signal<Meal | null>(null);
   suggestionMeals = signal<Meal[]>([]);
   id = signal<string>('');
-  youtubeVideoId = signal<string>('');
-  apiLoaded = signal<boolean>(false);
+
+  youtubeVideoId = signal<string>(''); // tạo biến lưu id video youtube
+  apiLoaded = signal<boolean>(false); // biến kiểm tra api đã load hay chưa
+
+  /*
+    khai báo signal để lưu trạng thái tab hiện tại
+    Mặc định hiển thị tab "ingredients"
+  */
   activeTab = signal<string>('ingredients');
 
-  constructor(private mealService: MealService) { }
-
-  // Thêm phương thức để chuyển tab
+  /*
+    Định nghĩa phương thức chuyển tab
+    để chuyển dổi giữa các tab
+  */
   setActiveTab(tabId: string): void {
     this.activeTab.set(tabId);
   }
 
+  /*
+    inject mealService thông qua constructor
+    để sử dụng các phương thức của mealService
+
+    có thể sử dụng inject() để inject service
+  */
+  constructor(private mealService: MealService) { }
+
   ngOnInit() {
-    // Load YouTube API script
+    /*
+      - Mục đích của đoạn code này là để tải mã API của YouTube IFrame Player
+      khi component được khởi tại
+      - Nếu đang dùng thư viện <youtube-player> trong Angular
+      thì Youtube Iframe API cần được tải trước để component hoạt động được
+      -> Đảm bảo rằng mã API chỉ được tải một lần duy nhất
+      -> Không bị load lại nhiều lần mỗi khi component được tạo lại
+
+      ?Vì sao cần YouTube API?
+      - Để tải video
+      - Điều khiển video (play, pause, chất lượng, v.v)
+      - Giúp giao tiếp với player từ code
+      - Nếu không tải trước script này, player sẽ không hoạt động hoặc lỗi YT is not defined
+    */
     if (!this.apiLoaded()) {
       // This code loads the IFrame Player API code asynchronously
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(tag);
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(script);
       this.apiLoaded.set(true);
     }
 
@@ -57,31 +85,39 @@ export class MealDetailComponent implements OnInit {
           }))
         .subscribe({
           next: (data) => {
-            // First check if data.meals is a string (error case)
+
+            /*
+              Do dữ liệu không hợp lệ của theMealDB sẽ trả về data.meals = "Invalid ID"
+              Nên cần kiểm tra xem data.meals có phải là một chuỗi hay không
+              Nếu đúng thì sẽ không phải là một mảng chứa các món ăn
+            */
             if (typeof data.meals === 'string') {
               console.error('API returned error:', data.meals);
               this.mealData.set(null);
             }
-            // Now check if it's a valid array with content
+
+            // nếu nó không phải là một chuỗi thì sẽ kiểm tra xem nó có phải là một mảng hay không
+            // vì dữ liệu trả về chi tiết mealData là một phần tử duy nhất nằm trong mảng
+            // nên ta sẽ phải lấy ra phần tử đầu tiên của mảng
             else if (data && data.meals && Array.isArray(data.meals) && data.meals.length > 0) {
               this.mealData.set(data.meals[0]);
 
-              // Extract YouTube video ID if available
               if (this.mealData()?.strYoutube) {
                 this.youtubeVideoId.set(this.getYoutubeVideoId(this.mealData()?.strYoutube || ''));
               }
-
+              /*
+                chỉ gọi hàm này khi mealData đã có dữ liệu (!== null)
+                vì hàm này tìm kiếm những món ăn liên quan đến main ingredient của mealData
+              */
               this.getSuggestionMealByMainIngredient();
             }
             else {
-              // Handle no data case
               this.mealData.set(null);
             }
-
             this.isLoading.set(false);
-
           },
-          error: () => {
+          error: (err) => {
+            console.error('Error fetching meals by ingredient', err);
             this.isLoading.set(false);
           }
         });
@@ -89,7 +125,7 @@ export class MealDetailComponent implements OnInit {
     }
   }
 
-  // Extract YouTube video ID from URL
+
   getYoutubeVideoId(url: string): string {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
@@ -102,7 +138,14 @@ export class MealDetailComponent implements OnInit {
     return this.mealData() !== null;
   }
 
-  // Trả về mảng từ 1-20 để lặp qua danh sách nguyên liệu
+  /*
+    Trả về mảng từ 1-20 để lặp qua danh sách nguyên liệu
+    DO mặc định hàm này trả về 20 phần tử mặc định từng phần tử là undefined
+    vì vậy truyền callback để xử lý phần dữ liệu này
+    => thay vì trả về một mảng chứa 20 phần tử undefined thì
+      ta sẽ trả về các con số index + 1
+    Kết quả: [1,2,3, ... , 20]
+  */
   getIngredientIndexes(): number[] {
     return Array.from({ length: 20 }, (_, i) => i + 1);
   }
@@ -147,10 +190,7 @@ export class MealDetailComponent implements OnInit {
           }))
         .subscribe({
           next: (data) => {
-            console.log("data", data);
-            // First check if data.meals is a string (error case)
             if (typeof data.meals === 'string') {
-              console.error('API returned error:', data.meals);
               this.suggestionMeals.set([]);
             }
             // Now check if it's a valid array with content
