@@ -2,8 +2,6 @@
 
 ### Phiên bản hiện tại: v1.0.2
 
-Ứng dụng tuân theo quy tắc [Semantic Versioning](https://semver.org/) với format: MAJOR.MINOR.PATCH
-
 ### Các thay đổi trong phiên bản v1.0.2
 - Tối ưu hóa hiệu suất tải dữ liệu từ API
 - Cập nhật tài liệu README với thông tin đầy đủ về ứng dụng
@@ -56,8 +54,7 @@ Dự án bao gồm các hình ảnh minh họa cho các trang chính trong thư 
 | ![Trang chi tiết món ăn 2](/src/assets/images/trang_chi_tieti_mon_an_2.png) | Chi tiết món ăn (phần 2) |
 
 ## Công nghệ sử dụng
-
-- **Angular 19.2.0**: Framework frontend chính
+- **Angular 19.2.0: Framework frontend chính
 - **Angular Signals**: Quản lý trạng thái ứng dụng
 - **Bootstrap 5**: Framework CSS cho giao diện đáp ứng
 - **RxJS**: Xử lý luồng dữ liệu bất đồng bộ
