@@ -1,10 +1,10 @@
 ## Phiên bản
 
-### Phiên bản hiện tại: v1.0.2
+### Phiên bản hiện tại: v1.0.3
 
-### Các thay đổi trong phiên bản v1.0.2
-- Tối ưu hóa hiệu suất tải dữ liệu từ API
-- Cập nhật tài liệu README với thông tin đầy đủ về ứng dụng
+### Các thay đổi trong phiên bản v1.0.3
+- Cập nhật thêm trang Contact sử dụng Reactive Form Module
+
 
 # Food Recipe Web
 
