@@ -1,3 +1,11 @@
+## Phiên bản
+
+### Phiên bản hiện tại: v1.0.2
+
+### Các thay đổi trong phiên bản v1.0.2
+- Tối ưu hóa hiệu suất tải dữ liệu từ API
+- Cập nhật tài liệu README với thông tin đầy đủ về ứng dụng
+
 # Food Recipe Web
 
 Food Recipe Web là ứng dụng web hiện đại được phát triển bằng Angular 19, cho phép người dùng khám phá, tìm kiếm và xem các công thức nấu ăn đa dạng từ khắp nơi trên thế giới. Ứng dụng này sử dụng TheMealDB API để cung cấp dữ liệu về các món ăn.
@@ -46,8 +54,7 @@ Dự án bao gồm các hình ảnh minh họa cho các trang chính trong thư 
 | ![Trang chi tiết món ăn 2](/src/assets/images/trang_chi_tieti_mon_an_2.png) | Chi tiết món ăn (phần 2) |
 
 ## Công nghệ sử dụng
-
-- **Angular 19.2.0**: Framework frontend chính
+- **Angular 19.2.0: Framework frontend chính
 - **Angular Signals**: Quản lý trạng thái ứng dụng
 - **Bootstrap 5**: Framework CSS cho giao diện đáp ứng
 - **RxJS**: Xử lý luồng dữ liệu bất đồng bộ
