@@ -1,3 +1,8 @@
+<!--
+ .navbar-expand
+ Khi màn hình rộng >= breakpoint (lg: ở đây là 992px): menu luôn mở (Không thu gọn)
+ (Không có nút toggle)
+-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container d-flex justify-content-between">
     <!-- Logo -->
@@ -7,6 +12,16 @@
     </a>
 
     <!-- Toggle button for mobile -->
+
+    <!--
+      .navbar-toggler
+      - Là nút bấm (biểu tượng 3 gạch) để hiển/ẩn menu khi responsive
+      - Chỉ hiện ra khi màn hình nhỏ hơn breakpoint (lg: ở đây là 992px)
+        đã định tron .navbar-expand-lg
+
+      *Lưu ý: Cần thuộc tính data-bs-toggle="collapse" và "data-bs-target="#id-menu""
+      để bootstrap biết toggle menu nào
+    -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
